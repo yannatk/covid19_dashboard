@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _country = 'USA';
+  String _country = 'BJ';
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 CountryDropdown(
-                  countries: ['CN', 'FR', 'IN', 'IT', 'UK', 'USA'],
+                  countries: [
+                    'BJ',
+                    'BF',
+                    'CA',
+                    'CI',
+                    'CN',
+                    'FR',
+                    'GH',
+                    'IT',
+                    'NG',
+                    'TG',
+                    'USA'
+                  ],
                   country: _country,
                   onChanged: (val) => setState(() => _country = val),
                 ),
