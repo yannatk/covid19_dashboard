@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
         slivers: <Widget>[
           _buildHeader(screenHeight),
           _buildPreventionTips(screenHeight),
-          _buildYourOwnTest(screenHeight),
+          _buildSymptoms(screenHeight),
         ],
       ),
     );
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Are you feeling sick?',
+                  'Vous vous sentez malade?',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 22.0,
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  'If you feel sick with any COVID-19 symptoms, please call or text us immediately for help',
+                  'Dès que vous ressentez un ou des symptômes en bas de page, veuillez appeler ou envoyer un SMS immediatement',
                   style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 15.0,
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                       ),
                       label: Text(
-                        'Call Now',
+                        'Appel',
                         style: Styles.buttonTextStyle,
                       ),
                       textColor: Colors.white,
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                       ),
                       label: Text(
-                        'Send SMS',
+                        'SMS',
                         style: Styles.buttonTextStyle,
                       ),
                       textColor: Colors.white,
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Prevention Tips',
+              'Les Gestes Barrières',
               style: const TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w600,
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter _buildYourOwnTest(double screenHeight) {
+  SliverToBoxAdapter _buildSymptoms(double screenHeight) {
     return SliverToBoxAdapter(
       child: Container(
         margin: const EdgeInsets.symmetric(
@@ -197,40 +197,32 @@ class _HomeScreenState extends State<HomeScreen> {
           horizontal: 20.0,
         ),
         padding: const EdgeInsets.all(10.0),
-        height: screenHeight * 0.15,
+        height: screenHeight * 0.50,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFFAD9FE4), Palette.primaryColor],
           ),
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.asset('assets/images/own_test.png'),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Do your own test!',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Text(
-                  'Follow the instructions\nto do your own test.',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                  ),
-                  maxLines: 2,
-                ),
-              ],
-            )
+            Text(
+              'Symptômes',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Image.asset(
+              'assets/images/symptoms.png',
+              fit: BoxFit.contain,
+            ),
           ],
         ),
       ),
