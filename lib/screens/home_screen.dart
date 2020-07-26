@@ -54,19 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 CountryDropdown(
-                  countries: [
-                    'BJ',
-                    'BF',
-                    'CA',
-                    'CI',
-                    'CN',
-                    'FR',
-                    'GH',
-                    'IT',
-                    'NG',
-                    'TG',
-                    'USA'
-                  ],
+                  countries: ['BJ'],
                   country: _country,
                   onChanged: (val) => setState(() => _country = val),
                 ),
@@ -221,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Image.asset(
               'assets/images/symptoms.png',
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
             ),
           ],
         ),
