@@ -5,7 +5,7 @@ import 'package:covid19_dashboard/models/summary_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<SummaryOfCases> fetchSummaryOfCases() async {
+Future<SummaryOfCases> fetchGlobalCases() async {
   final response = await http.get("https://api.covid19api.com/summary");
 
   if (response.statusCode == 200) {
@@ -15,18 +15,18 @@ Future<SummaryOfCases> fetchSummaryOfCases() async {
   }
 }
 
-class StatsGrid extends StatefulWidget {
+class StatsGridWorld extends StatefulWidget {
   @override
-  _StatsGridState createState() => _StatsGridState();
+  _StatsGridWorldState createState() => _StatsGridWorldState();
 }
 
-class _StatsGridState extends State<StatsGrid> {
-  Future<SummaryOfCases> futureSummaryOfCases;
+class _StatsGridWorldState extends State<StatsGridWorld> {
+  Future<SummaryOfCases> futureGlobalCases;
 
   @override
   void initState() {
     super.initState();
-    futureSummaryOfCases = fetchSummaryOfCases();
+    futureGlobalCases = fetchGlobalCases();
   }
 
   @override
@@ -34,7 +34,7 @@ class _StatsGridState extends State<StatsGrid> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.30,
       child: FutureBuilder<SummaryOfCases>(
-        future: futureSummaryOfCases,
+        future: futureGlobalCases,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Column(
@@ -44,11 +44,11 @@ class _StatsGridState extends State<StatsGrid> {
                     children: <Widget>[
                       _buildStatCard(
                           'Nouveaux Cas Confirmés',
-                          snapshot.data.countries[18].newConfirmed.toString(),
+                          snapshot.data.global.newConfirmed.toString(),
                           Colors.deepOrange),
                       _buildStatCard(
                           'Total Cas Confirmés',
-                          snapshot.data.countries[18].totalConfirmed.toString(),
+                          snapshot.data.global.totalConfirmed.toString(),
                           Colors.deepOrange),
                     ],
                   ),
@@ -58,11 +58,11 @@ class _StatsGridState extends State<StatsGrid> {
                     children: <Widget>[
                       _buildStatCard(
                           'Nouveaux Cas Guéris',
-                          snapshot.data.countries[18].newRecovered.toString(),
+                          snapshot.data.global.newRecovered.toString(),
                           Colors.green),
                       _buildStatCard(
                           'Total Cas Guéris',
-                          snapshot.data.countries[18].totalRecovered.toString(),
+                          snapshot.data.global.totalRecovered.toString(),
                           Colors.green),
                     ],
                   ),
@@ -72,11 +72,11 @@ class _StatsGridState extends State<StatsGrid> {
                     children: <Widget>[
                       _buildStatCard(
                           'Nouveaux Décès',
-                          snapshot.data.countries[18].newDeaths.toString(),
+                          snapshot.data.global.newDeaths.toString(),
                           Colors.grey),
                       _buildStatCard(
                           'Total Décès',
-                          snapshot.data.countries[18].totalDeaths.toString(),
+                          snapshot.data.global.totalDeaths.toString(),
                           Colors.grey),
                     ],
                   ),
@@ -86,7 +86,7 @@ class _StatsGridState extends State<StatsGrid> {
                   height: 100.0,
                   child: _buildStatCard(
                       'Sous traitement',
-                      '${snapshot.data.countries[18].totalConfirmed - snapshot.data.countries[18].totalRecovered - snapshot.data.countries[18].totalDeaths}',
+                      '${snapshot.data.global.totalConfirmed - snapshot.data.global.totalRecovered - snapshot.data.global.totalDeaths}',
                       Colors.orange),
                 ),
               ],
@@ -98,8 +98,8 @@ class _StatsGridState extends State<StatsGrid> {
                   child: Row(
                     children: <Widget>[
                       _buildStatCard(
-                          'Cas confirmés', snapshot.error, Colors.red),
-                      _buildStatCard('Décès', snapshot.error, Colors.grey),
+                          'Cas confirmés', snapshot.error, Colors.orange),
+                      _buildStatCard('Décès', snapshot.error, Colors.red),
                     ],
                   ),
                 ),
@@ -109,7 +109,7 @@ class _StatsGridState extends State<StatsGrid> {
                       _buildStatCard(
                           'Cas guéris', snapshot.error, Colors.green),
                       _buildStatCard(
-                          'Sous traitement', snapshot.error, Colors.orange),
+                          'Sous traitement', snapshot.error, Colors.lightBlue),
                     ],
                   ),
                 ),
