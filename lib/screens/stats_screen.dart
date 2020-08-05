@@ -21,11 +21,11 @@ class _StatsScreenState extends State<StatsScreen> {
           title: Text(
             "Statistiques",
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.black54,
             ),
           ),
           bottom: TabBar(
-              unselectedLabelColor: Colors.redAccent,
+              unselectedLabelColor: Colors.black54,
               indicatorSize: TabBarIndicatorSize.label,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),

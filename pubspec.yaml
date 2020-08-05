@@ -30,6 +30,7 @@ dependencies:
   bubble_tab_indicator: ^0.1.4
   fl_chart: ^0.10.1
   http: ^0.12.2
+  curved_navigation_bar:
 
 dev_dependencies:
   flutter_test:

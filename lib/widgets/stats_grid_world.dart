@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:covid19_dashboard/data/data.dart';
 import 'package:covid19_dashboard/models/summary_model.dart';
+import 'package:covid19_dashboard/widgets/covid_bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,7 +39,8 @@ class _StatsGridWorldState extends State<StatsGridWorld> {
         future: futureGlobalCases,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Column(
+            return ListView(
+              padding: EdgeInsets.all(10),
               children: <Widget>[
                 Flexible(
                   child: Row(
@@ -88,6 +91,9 @@ class _StatsGridWorldState extends State<StatsGridWorld> {
                       'Sous traitement',
                       '${snapshot.data.global.totalConfirmed - snapshot.data.global.totalRecovered - snapshot.data.global.totalDeaths}',
                       Colors.orange),
+                ),
+                Flexible(
+                  child: CovidBarChart(covidCases: covidWorldDailNewCases),
                 ),
               ],
             );
@@ -144,6 +150,9 @@ class _StatsGridWorldState extends State<StatsGridWorld> {
                 fontSize: 15.0,
                 fontWeight: FontWeight.w600,
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Text(
               count,

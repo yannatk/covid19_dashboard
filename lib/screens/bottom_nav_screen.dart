@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_dashboard/screens/screens.dart';
 
@@ -20,39 +21,41 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
-        type: BottomNavigationBarType.fixed,
+      bottomNavigationBar: CurvedNavigationBar(
+        color: Colors.deepPurple[900],
         backgroundColor: Colors.white,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        elevation: 0.0,
-        items: [Icons.home, Icons.insert_chart, Icons.event_note, Icons.info]
-            .asMap()
-            .map((key, value) => MapEntry(
-                  key,
-                  BottomNavigationBarItem(
-                    title: Text(''),
-                    icon: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 6.0,
-                        horizontal: 16.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _currentIndex == key
-                            ? Colors.blue[600]
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Icon(value),
-                    ),
-                  ),
-                ))
-            .values
-            .toList(),
+        buttonBackgroundColor: Colors.deepPurple[900],
+        height: 50,
+        items: <Widget>[
+          Icon(
+            Icons.home,
+            size: 20,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.insert_chart,
+            size: 20,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.event_note,
+            size: 20,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.help,
+            size: 20,
+            color: Colors.white,
+          ),
+        ],
+        animationDuration: Duration(milliseconds: 200),
+        index: _currentIndex,
+        animationCurve: Curves.bounceInOut,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }

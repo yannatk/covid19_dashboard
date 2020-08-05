@@ -4,4 +4,14 @@ final prevention = [
   {'assets/images/mask.png': 'Port\ndu masque'},
 ];
 
-final covidUSADailyNewCases = [12.17, 11.15, 10.02, 11.21, 13.83, 14.16, 14.30];
+final covidBeninDailyNewCases = [
+  0.1199,
+  0.1199,
+  0.1199,
+  0.1199,
+  0.1199,
+  0.1199,
+  0.1199
+];
+
+final covidWorldDailNewCases = [16.2, 16.3, 16.1, 16.4, 16.5, 16.2, 16.2];
