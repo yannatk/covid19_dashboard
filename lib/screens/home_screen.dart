@@ -11,7 +11,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // ignore: unused_field
+  Future<void> _launched;
+  String _phone = '136';
   String _country = 'BJ';
+
+  Future<void> _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +101,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         vertical: 10.0,
                         horizontal: 20.0,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          _launched = _makePhoneCall('tel: $_phone');
+                        });
+                      },
                       color: Colors.red,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
@@ -101,26 +116,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       label: Text(
                         'Appel',
-                        style: Styles.buttonTextStyle,
-                      ),
-                      textColor: Colors.white,
-                    ),
-                    FlatButton.icon(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
-                      ),
-                      onPressed: () {},
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      icon: const Icon(
-                        Icons.chat_bubble,
-                        color: Colors.white,
-                      ),
-                      label: Text(
-                        'SMS',
                         style: Styles.buttonTextStyle,
                       ),
                       textColor: Colors.white,
