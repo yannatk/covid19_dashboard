@@ -11,8 +11,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screens = [
     HomeScreen(),
     StatsScreen(),
-    Scaffold(),
-    Scaffold(),
+    NewsScreen(),
     Scaffold(),
   ];
   int _currentIndex = 0;

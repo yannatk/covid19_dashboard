@@ -10,6 +10,8 @@ class StatsScreen extends StatefulWidget {
 }
 
 class _StatsScreenState extends State<StatsScreen> {
+  DateTime currentDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -24,6 +26,15 @@ class _StatsScreenState extends State<StatsScreen> {
               color: Colors.black54,
             ),
           ),
+          actions: [
+            Center(
+              child: Text(
+                currentDate.toString().substring(0, 10),
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+            ),
+          ],
           bottom: TabBar(
               unselectedLabelColor: Colors.black54,
               indicatorSize: TabBarIndicatorSize.label,

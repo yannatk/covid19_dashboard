@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:covid19_dashboard/config/palette.dart';
 import 'package:covid19_dashboard/config/styles.dart';
 import 'package:covid19_dashboard/data/data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

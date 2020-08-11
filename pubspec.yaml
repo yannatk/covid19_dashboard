@@ -31,6 +31,8 @@ dependencies:
   fl_chart: ^0.10.1
   http: ^0.12.2
   curved_navigation_bar:
+  url_launcher: 
+  get_it:
 
 dev_dependencies:
   flutter_test:
