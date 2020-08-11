@@ -1,3 +1,4 @@
+import 'package:covid19_dashboard/screens/help_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_dashboard/screens/screens.dart';
@@ -12,7 +13,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     HomeScreen(),
     StatsScreen(),
     NewsScreen(),
-    Scaffold(),
+    HelpScreen(),
   ];
   int _currentIndex = 0;
 
