@@ -64,3 +64,5 @@ final latestNews = [
     "urlToImage": "assets/images/gouv_bj.png"
   },
 ];
+
+final contact = ["nathey11@gmail.com", "+229 91987478"];
