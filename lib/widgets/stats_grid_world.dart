@@ -92,8 +92,160 @@ class _StatsGridWorldState extends State<StatsGridWorld> {
                       '${snapshot.data.global.totalConfirmed - snapshot.data.global.totalRecovered - snapshot.data.global.totalDeaths}',
                       Colors.orange),
                 ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 Flexible(
-                  child: CovidBarChart(covidCases: covidWorldDailNewCases),
+                  child: Table(
+                    border: TableBorder.all(
+                        color: Colors.grey[800],
+                        width: 1,
+                        style: BorderStyle.none),
+                    children: [
+                      TableRow(
+                        children: [
+                          TableCell(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.lightBlue,
+                              ),
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  "Pays",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          TableCell(
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: Colors.lightBlue),
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  "Total",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          TableCell(
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: Colors.lightBlue),
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  "Actif",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          TableCell(
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: Colors.lightBlue),
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  "Guéris",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          TableCell(
+                            child: Container(
+                              decoration:
+                                  BoxDecoration(color: Colors.lightBlue),
+                              padding: EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  "Décès",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      for (var i = 0; i < snapshot.data.countries.length; i++)
+                        TableRow(
+                          decoration: BoxDecoration(color: Colors.blueGrey[50]),
+                          children: [
+                            TableCell(
+                              child: Text(
+                                snapshot.data.countries
+                                    .elementAt(i)
+                                    .countryName,
+                                style: TextStyle(
+                                    color: Colors.indigo[900],
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.start,
+                              ),
+                              verticalAlignment:
+                                  TableCellVerticalAlignment.baseline,
+                            ),
+                            TableCell(
+                              child: Center(
+                                child: Text(
+                                  snapshot.data.countries
+                                      .elementAt(i)
+                                      .totalConfirmed
+                                      .toString(),
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.end,
+                                ),
+                              ),
+                            ),
+                            TableCell(
+                              child: Center(
+                                child: Text(
+                                  '${snapshot.data.countries.elementAt(i).totalConfirmed - snapshot.data.countries.elementAt(i).totalRecovered - snapshot.data.countries.elementAt(i).totalDeaths}',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.end,
+                                ),
+                              ),
+                            ),
+                            TableCell(
+                              child: Center(
+                                child: Text(
+                                  snapshot.data.countries
+                                      .elementAt(i)
+                                      .totalRecovered
+                                      .toString(),
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.end,
+                                ),
+                              ),
+                            ),
+                            TableCell(
+                              child: Center(
+                                child: Text(
+                                  snapshot.data.countries
+                                      .elementAt(i)
+                                      .totalDeaths
+                                      .toString(),
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.end,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
                 ),
               ],
             );
