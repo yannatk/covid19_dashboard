@@ -29,22 +29,22 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         items: <Widget>[
           Icon(
             Icons.home,
-            size: 20,
+            size: 25,
             color: Colors.white,
           ),
           Icon(
             Icons.insert_chart,
-            size: 20,
+            size: 25,
             color: Colors.white,
           ),
           Icon(
             Icons.event_note,
-            size: 20,
+            size: 25,
             color: Colors.white,
           ),
           Icon(
-            Icons.help,
-            size: 20,
+            Icons.announcement,
+            size: 25,
             color: Colors.white,
           ),
         ],
