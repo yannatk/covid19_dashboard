@@ -1,7 +1,6 @@
 import 'package:covid19_dashboard/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:async/async.dart';
 
 /*
 Future<News> fetchNews() async {
