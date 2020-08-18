@@ -24,9 +24,9 @@ class CovidBarChart extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             alignment: Alignment.centerLeft,
             child: Text(
-              'Nouveaux Cas Journaliers',
+              'Graphique des Cas Journaliers',
               style: const TextStyle(
-                color: Colors.black54,
+                color: Colors.black,
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
               ),

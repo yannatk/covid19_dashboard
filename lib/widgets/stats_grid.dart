@@ -5,6 +5,7 @@ import 'package:covid19_dashboard/data/data.dart';
 import 'package:covid19_dashboard/models/summary_model.dart';
 import 'package:covid19_dashboard/widgets/covid_bar_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 Future<SummaryOfCases> fetchSummaryOfCases() async {
@@ -16,6 +17,9 @@ Future<SummaryOfCases> fetchSummaryOfCases() async {
     throw Exception("Failed to load the summary");
   }
 }
+
+RegExp regMyCountry = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
+Function matchFuncMyCountry = (Match match) => '${match[1]},';
 
 class StatsGrid extends StatefulWidget {
   @override
@@ -39,131 +43,275 @@ class _StatsGridState extends State<StatsGrid> {
         future: futureSummaryOfCases,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            var activeCases = snapshot.data.countries[18].totalConfirmed -
+                snapshot.data.countries[18].totalRecovered -
+                snapshot.data.countries[18].totalDeaths;
+
             return ListView(
               padding: EdgeInsets.all(10),
               children: <Widget>[
-                Flexible(
-                  child: Row(
-                    children: <Widget>[
-                      _buildStatCard(
-                          'Nouveaux Cas Confirmés',
-                          snapshot.data.countries[18].newConfirmed.toString(),
-                          Colors.deepOrange),
-                      _buildStatCard(
-                          'Total Cas Confirmés',
-                          snapshot.data.countries[18].totalConfirmed.toString(),
-                          Colors.deepOrange),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black87,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  width: 250.0,
+                  height: 150.0,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Cas Confirmés",
+                          style: TextStyle(color: Colors.white, fontSize: 20.0),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FaIcon(
+                              FontAwesomeIcons.check,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              snapshot.data.countries[18].totalConfirmed
+                                  .toString()
+                                  .replaceAllMapped(
+                                      regMyCountry, matchFuncMyCountry),
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 40.0),
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "Aujourd'hui: ",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "+${snapshot.data.countries[18].newConfirmed.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 25.0,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
-                Flexible(
-                  child: Row(
-                    children: <Widget>[
-                      _buildStatCard(
-                          'Nouveaux Cas Guéris',
-                          snapshot.data.countries[18].newRecovered.toString(),
-                          Colors.green),
-                      _buildStatCard(
-                          'Total Cas Guéris',
-                          snapshot.data.countries[18].totalRecovered.toString(),
-                          Colors.green),
-                    ],
-                  ),
+                SizedBox(height: 20.0),
+                Row(
+                  children: [
+                    Container(
+                      width: 150.0,
+                      height: 150.0,
+                      decoration: BoxDecoration(
+                          color: Colors.black87,
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Sous Traitement",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 20.0),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.hospitalUser,
+                                color: Colors.orange,
+                              ),
+                              Text(
+                                '$activeCases'.toString().replaceAllMapped(
+                                    regMyCountry, matchFuncMyCountry),
+                                style: TextStyle(
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40.0),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "+${snapshot.data.countries[18].newConfirmed.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: 18.0,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 40.0,
+                    ),
+                    Container(
+                      width: 150.0,
+                      height: 150.0,
+                      decoration: BoxDecoration(
+                        color: Colors.black87,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(
+                              "Cas Guéris",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 20.0),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.heartbeat,
+                                color: Colors.greenAccent[400],
+                              ),
+                              Text(
+                                snapshot.data.countries[18].totalRecovered
+                                    .toString()
+                                    .replaceAllMapped(
+                                        regMyCountry, matchFuncMyCountry),
+                                style: TextStyle(
+                                  color: Colors.greenAccent[400],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 40.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "+${snapshot.data.countries[18].newRecovered.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
+                              style: TextStyle(
+                                color: Colors.greenAccent[400],
+                                fontSize: 18.0,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Flexible(
-                  child: Row(
-                    children: <Widget>[
-                      _buildStatCard(
-                          'Nouveaux Décès',
-                          snapshot.data.countries[18].newDeaths.toString(),
-                          Colors.grey),
-                      _buildStatCard(
-                          'Total Décès',
-                          snapshot.data.countries[18].totalDeaths.toString(),
-                          Colors.grey),
-                    ],
-                  ),
+                SizedBox(
+                  height: 20,
                 ),
                 Container(
-                  width: 250.0,
-                  height: 100.0,
-                  child: _buildStatCard(
-                      'Sous traitement',
-                      '${snapshot.data.countries[18].totalConfirmed - snapshot.data.countries[18].totalRecovered - snapshot.data.countries[18].totalDeaths}',
-                      Colors.orange),
+                  width: 250,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.black87,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Décès",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FaIcon(FontAwesomeIcons.skull,
+                                color: Colors.red),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              snapshot.data.countries[18].totalDeaths
+                                  .toString()
+                                  .replaceAllMapped(
+                                      regMyCountry, matchFuncMyCountry),
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 40,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(300.0, 0, 0, 0),
+                        child: Text(
+                          "+${snapshot.data.countries[18].newDeaths.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontStyle: FontStyle.italic,
+                              fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Flexible(
-                  child: CovidBarChart(covidCases: covidBeninDailyNewCases),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: CovidBarChart(
+                    covidCases: covidBeninDailyNewCases,
+                  ),
                 ),
               ],
             );
           } else if (snapshot.hasError) {
-            return Column(
-              children: <Widget>[
-                Flexible(
-                  child: Row(
-                    children: <Widget>[
-                      _buildStatCard(
-                          'Cas confirmés', snapshot.error, Colors.red),
-                      _buildStatCard('Décès', snapshot.error, Colors.grey),
-                    ],
-                  ),
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  "Données non disponible actuellement due à un problème de connectivité internet. Veuillez réessayer ultérieurement !",
                 ),
-                Flexible(
-                  child: Row(
-                    children: <Widget>[
-                      _buildStatCard(
-                          'Cas guéris', snapshot.error, Colors.green),
-                      _buildStatCard(
-                          'Sous traitement', snapshot.error, Colors.orange),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             );
           }
           return Center(
             child: CircularProgressIndicator(),
           );
         },
-      ),
-    );
-  }
-
-  Expanded _buildStatCard(String title, String count, MaterialColor color) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              count,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

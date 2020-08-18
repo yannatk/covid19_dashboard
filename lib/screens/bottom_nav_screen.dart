@@ -2,6 +2,7 @@ import 'package:covid19_dashboard/screens/help_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_dashboard/screens/screens.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomNavScreen extends StatefulWidget {
   @override
@@ -27,24 +28,20 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         buttonBackgroundColor: Colors.deepPurple[900],
         height: 50,
         items: <Widget>[
-          Icon(
-            Icons.home,
-            size: 25,
+          FaIcon(
+            FontAwesomeIcons.home,
             color: Colors.white,
           ),
-          Icon(
-            Icons.insert_chart,
-            size: 25,
+          FaIcon(
+            FontAwesomeIcons.chartBar,
             color: Colors.white,
           ),
-          Icon(
-            Icons.event_note,
-            size: 25,
+          FaIcon(
+            FontAwesomeIcons.newspaper,
             color: Colors.white,
           ),
-          Icon(
-            Icons.announcement,
-            size: 25,
+          FaIcon(
+            FontAwesomeIcons.handsHelping,
             color: Colors.white,
           ),
         ],
