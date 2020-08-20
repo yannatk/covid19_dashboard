@@ -1,19 +1,10 @@
 import 'package:covid19_dashboard/data/data.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'stats_screen.dart';
 
-/*
-Future<News> fetchNews() async {
-  final response = await http.get(
-      "https://newsapi.org/v2/top-headlines?q=coronavirus&language=fr&apiKey=369bd54d9e0b4eb3945f29d71f24d234");
-
-  if (response.statusCode == 200) {
-    return News.fromJson(json.decode(response.body));
-  } else {
-    throw Exception("Failed to load the news");
-  }
-}
-*/
+var newFormatDate = DateFormat.yMMMEd().format(dateTime);
 
 class NewsScreen extends StatefulWidget {
   @override
@@ -21,18 +12,6 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-  /*
-  Future<News> futureNews;
-
-  @override
-  void initState() {
-    super.initState();
-    futureNews = fetchNews();
-  }
-  */
-
-  DateTime currentDate = DateTime.now();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +21,7 @@ class _NewsScreenState extends State<NewsScreen> {
         actions: [
           Center(
             child: Text(
-              currentDate.toString().substring(0, 10),
+              newFormatDate,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

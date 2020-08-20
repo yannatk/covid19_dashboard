@@ -2,15 +2,17 @@ import 'package:covid19_dashboard/widgets/StatsOfAllCountries.dart';
 import 'package:covid19_dashboard/widgets/stats_grid.dart';
 import 'package:covid19_dashboard/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StatsScreen extends StatefulWidget {
   @override
   _StatsScreenState createState() => _StatsScreenState();
 }
 
-class _StatsScreenState extends State<StatsScreen> {
-  DateTime currentDate = DateTime.now();
+var dateTime = DateTime.now();
+var newFormatOfDate = DateFormat.yMMMEd().format(dateTime);
 
+class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,7 +30,7 @@ class _StatsScreenState extends State<StatsScreen> {
           actions: [
             Center(
               child: Text(
-                currentDate.toString().substring(0, 10),
+                newFormatOfDate,
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
