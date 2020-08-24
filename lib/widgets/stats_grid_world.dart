@@ -1,18 +1,32 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:covid19_dashboard/models/summary_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 Future<SummaryOfCases> fetchGlobalCases() async {
-  final response = await http.get("https://api.covid19api.com/summary");
+  String fileName = "CacheData.json";
+  var cacheDir = await getTemporaryDirectory();
 
-  if (response.statusCode == 200) {
-    return SummaryOfCases.fromJson(json.decode(response.body));
+  if (await File(cacheDir.path + "/" + fileName).exists()) {
+    var jsonData = File(cacheDir.path + "/" + fileName).readAsStringSync();
+    return SummaryOfCases.fromJson(json.decode(jsonData));
   } else {
-    throw Exception("Failed to load the summary");
+    var response = await http.get("https://api.covid19api.com/summary");
+
+    if (response.statusCode == 200) {
+      var tempDir = await getTemporaryDirectory();
+      File file = new File(tempDir.path + "/" + fileName);
+      file.writeAsString(response.body, flush: true, mode: FileMode.write);
+
+      return SummaryOfCases.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to load the Data");
+    }
   }
 }
 
