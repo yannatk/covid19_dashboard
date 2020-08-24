@@ -23,7 +23,24 @@ class _MyAppState extends State<MyApp> {
       child: SplashScreen(
         seconds: 10,
         navigateAfterSeconds: BottomNavScreen(),
-        image: Image.asset('assets/images/splash.png'),
+        image: Image.asset(
+          'assets/images/icon.png',
+        ),
+        title: Text(
+          "Benin COVID-19",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 40.0,
+          ),
+        ),
+        loadingText: Text(
+          "© 2020 Katakori Inc.",
+          style: TextStyle(
+            color: Colors.white,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
         photoSize: 150.0,
         backgroundColor: Colors.deepPurple[900],
         loaderColor: Colors.white,
@@ -31,31 +48,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-/*
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: [
-        // ... app-specific localization delegate[s] here
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('fr', 'FR'), // Hebrew, no country code
-      ],
-      locale: Localizations.of(context, GlobalMaterialLocalizations),
-      title: 'COVID-19 Benin',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: BottomNavScreen(),
-    );
-  }
-}
-*/
