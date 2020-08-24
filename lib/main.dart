@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         navigateAfterSeconds: BottomNavScreen(),
         image: Image.asset('assets/images/splash.png'),
         photoSize: 150.0,
-        backgroundColor: Colors.deepPurpleAccent[700],
+        backgroundColor: Colors.deepPurple[900],
         loaderColor: Colors.white,
       ),
     );
