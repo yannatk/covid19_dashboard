@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:covid19_dashboard/screens/screens.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyApp(),
+    ),
+  );
 }
 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      seconds: 10,
+      navigateAfterSeconds: BottomNavScreen(),
+      image: Image.asset('assets/images/splash.png'),
+      photoSize: 150.0,
+      backgroundColor: Colors.deepPurpleAccent[700],
+      loaderColor: Colors.white,
+    );
+  }
+}
+
+/*
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,3 +56,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/
