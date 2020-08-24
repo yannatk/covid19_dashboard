@@ -19,13 +19,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 10,
-      navigateAfterSeconds: BottomNavScreen(),
-      image: Image.asset('assets/images/splash.png'),
-      photoSize: 150.0,
-      backgroundColor: Colors.deepPurpleAccent[700],
-      loaderColor: Colors.white,
+    return Center(
+      child: SplashScreen(
+        seconds: 10,
+        navigateAfterSeconds: BottomNavScreen(),
+        image: Image.asset('assets/images/splash.png'),
+        photoSize: 150.0,
+        backgroundColor: Colors.deepPurpleAccent[700],
+        loaderColor: Colors.white,
+      ),
     );
   }
 }
