@@ -1,8 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_dashboard/screens/screens.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+/// Requires that a Firestore emulator is running locally.
+/// See https://firebase.flutter.dev/docs/firestore/usage#emulator-usage
+// ignore: non_constant_identifier_names
+bool USE_FIRESTORE_EMULATOR = false;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  if (USE_FIRESTORE_EMULATOR) {
+    FirebaseFirestore.instance.settings = Settings(
+        host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false);
+  }
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -21,7 +34,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Center(
       child: SplashScreen(
-        seconds: 10,
+        seconds: 5,
         navigateAfterSeconds: BottomNavScreen(),
         image: Image.asset(
           'assets/images/icon.png',
@@ -35,7 +48,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         loadingText: Text(
-          "© 2020 Katakori Inc.",
+          "© 2020 Katakuri Inc.",
           style: TextStyle(
             color: Colors.white,
             fontStyle: FontStyle.italic,

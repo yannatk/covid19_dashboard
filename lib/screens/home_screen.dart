@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Text(
               'Les Gestes Barrières',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w600,
               ),
@@ -182,22 +182,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         padding: const EdgeInsets.all(10.0),
         height: screenHeight * 0.50,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFAD9FE4), Palette.primaryColor],
-          ),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Symptômes',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
+              'Les Symptômes',
+              style: TextStyle(
+                fontSize: 22.0,
+                fontWeight: FontWeight.w600,
               ),
             ),
             SizedBox(

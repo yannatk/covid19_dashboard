@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "175599616798",
+    "firebase_url": "https://benin-covid19-app.firebaseio.com",
+    "project_id": "benin-covid19-app",
+    "storage_bucket": "benin-covid19-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175599616798:android:b8e56ef22c3b67e360bf0f",
+        "android_client_info": {
+          "package_name": "com.ykatakori.covid19_dashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175599616798-1hkh3218stla4jlomijsbaui9eh4v65f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeP2U54hxOTWORloByAOC-gAACyrLaU7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175599616798-1hkh3218stla4jlomijsbaui9eh4v65f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
