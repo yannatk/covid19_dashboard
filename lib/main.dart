@@ -4,8 +4,6 @@ import 'package:covid19_dashboard/screens/screens.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-/// Requires that a Firestore emulator is running locally.
-/// See https://firebase.flutter.dev/docs/firestore/usage#emulator-usage
 // ignore: non_constant_identifier_names
 bool USE_FIRESTORE_EMULATOR = false;
 
