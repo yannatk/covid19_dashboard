@@ -16,4 +16,4 @@ final covidBeninDailyNewCases = [
 
 final covidWorldDailNewCases = [16.2, 16.3, 16.1, 16.4, 16.5, 16.2, 16.2];
 
-final contact = ["nathey11@gmail.com", "+229 91987478"];
+final contact = ["katakuri.dev@gmail.com", "+229 91987478"];

@@ -34,17 +34,7 @@ class _MyAppState extends State<MyApp> {
       child: SplashScreen(
         seconds: 5,
         navigateAfterSeconds: BottomNavScreen(),
-        image: Image.asset(
-          'assets/images/icon.png',
-        ),
-        title: Text(
-          "Benin COVID-19",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 40.0,
-          ),
-        ),
+        image: Image.asset('assets/images/icon.png'),
         loadingText: Text(
           "© 2020 Katakuri Inc.",
           style: TextStyle(

@@ -38,10 +38,10 @@ class HelpScreen extends StatelessWidget {
                 Divider(),
                 ListTile(
                   leading: Icon(
-                    Icons.phone,
+                    Icons.message,
                   ),
                   title: Text(
-                    contact.last,
+                    'WhatsApp au ${contact.last}',
                   ),
                 ),
               ],

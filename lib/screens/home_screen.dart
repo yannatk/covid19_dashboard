@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _buildHeader(screenHeight),
           _buildPreventionTips(screenHeight),
           _buildSymptoms(screenHeight),
+          _buildWearMasksWell(screenHeight),
         ],
       ),
     );
@@ -176,11 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
   SliverToBoxAdapter _buildSymptoms(double screenHeight) {
     return SliverToBoxAdapter(
       child: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 10.0,
-          horizontal: 20.0,
-        ),
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(6.0),
         height: screenHeight * 0.50,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -199,6 +196,47 @@ class _HomeScreenState extends State<HomeScreen> {
             Image.asset(
               'assets/images/symptoms.png',
               fit: BoxFit.cover,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildWearMasksWell(double screenHeight) {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: screenHeight * 2.3,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Port du Masque',
+              style: TextStyle(
+                fontSize: 22.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Image.asset(
+              'assets/images/masque-tissu-good.png',
+              fit: BoxFit.cover,
+              height: screenHeight * 0.5,
+            ),
+            Image.asset(
+              'assets/images/masque-tissu-wrong.png',
+              fit: BoxFit.cover,
+              height: screenHeight * 0.5,
+            ),
+            Image.asset(
+              'assets/images/masque-medical-good.png',
+              fit: BoxFit.cover,
+              height: screenHeight * 0.5,
+            ),
+            Image.asset(
+              'assets/images/masque-medical-wrong.png',
+              fit: BoxFit.cover,
+              height: screenHeight * 0.5,
             ),
           ],
         ),
