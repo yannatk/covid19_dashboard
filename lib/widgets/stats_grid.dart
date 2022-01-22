@@ -137,114 +137,113 @@ class _StatsGridState extends State<StatsGrid> {
                   ),
                 ),
                 SizedBox(height: 20.0),
-                Row(
-                  children: [
-                    Container(
-                      width: 150.0,
-                      height: 150.0,
-                      decoration: BoxDecoration(
-                          color: Colors.black87,
-                          borderRadius: BorderRadius.circular(10.0)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Sous Traitement",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 20.0),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.hospitalUser,
-                                color: Colors.orange,
-                              ),
-                              Text(
-                                '$activeCases'.toString().replaceAllMapped(
-                                    regMyCountry, matchFuncMyCountry),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black87,
+                            borderRadius: BorderRadius.circular(10.0)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Sous Traitement",
                                 style: TextStyle(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 40.0),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "+${snapshot.data.countries[18].newConfirmed.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
-                              style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 18.0,
-                                fontStyle: FontStyle.italic,
+                                    color: Colors.white, fontSize: 20.0),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 40.0,
-                    ),
-                    Container(
-                      width: 150.0,
-                      height: 150.0,
-                      decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Text(
-                              "Cas Guéris",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 20.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.hospitalUser,
+                                  color: Colors.orange,
+                                ),
+                                Text(
+                                  '$activeCases'.toString().replaceAllMapped(
+                                      regMyCountry, matchFuncMyCountry),
+                                  style: TextStyle(
+                                      color: Colors.orange,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 40.0),
+                                ),
+                              ],
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.heartbeat,
-                                color: Colors.greenAccent[400],
-                              ),
-                              Text(
-                                snapshot.data.countries[18].totalRecovered
-                                    .toString()
-                                    .replaceAllMapped(
-                                        regMyCountry, matchFuncMyCountry),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "+${snapshot.data.countries[18].newConfirmed.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
                                 style: TextStyle(
-                                  color: Colors.greenAccent[400],
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 40.0,
+                                  color: Colors.orange,
+                                  fontSize: 18.0,
+                                  fontStyle: FontStyle.italic,
                                 ),
                               ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "+${snapshot.data.countries[18].newRecovered.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
-                              style: TextStyle(
-                                color: Colors.greenAccent[400],
-                                fontSize: 18.0,
-                                fontStyle: FontStyle.italic,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 40.0,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black87,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Text(
+                                "Cas Guéris",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20.0),
                               ),
                             ),
-                          ),
-                        ],
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.heartbeat,
+                                  color: Colors.greenAccent[400],
+                                ),
+                                Text(
+                                  snapshot.data.countries[18].totalRecovered
+                                      .toString()
+                                      .replaceAllMapped(
+                                          regMyCountry, matchFuncMyCountry),
+                                  style: TextStyle(
+                                    color: Colors.greenAccent[400],
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "+${snapshot.data.countries[18].newRecovered.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
+                                style: TextStyle(
+                                  color: Colors.greenAccent[400],
+                                  fontSize: 18.0,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -292,7 +291,7 @@ class _StatsGridState extends State<StatsGrid> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(300.0, 0, 0, 0),
+                        padding: const EdgeInsets.only(left: 16),
                         child: Text(
                           "+${snapshot.data.countries[18].newDeaths.toString().replaceAllMapped(regMyCountry, matchFuncMyCountry)}",
                           style: TextStyle(
